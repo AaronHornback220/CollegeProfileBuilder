@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var colleges = ["University of Illinois", " HarperCollege", "University of Wisconsin-Madison"]
+    var colleges : [College] = []
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return colleges.count
@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
-        cell.textLabel?.text = colleges[indexPath.row]
+        cell.textLabel?.text = colleges[indexPath.row].name
         return cell
     }
     
@@ -31,14 +31,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func onTappedPlusButton(sender: UIBarButtonItem) {
+        
         let alert = UIAlertController(title: "Add Colleges", message: nil, preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
             textField.placeholder = "Add Colleges Here"
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel , handler: nil )
+        alert.addAction(cancelAction)
         let addAction = UIAlertAction(title: "Add", style: .Default) { (action) -> Void in
             let collegeTextField = alert.textFields![0] as UITextField
-            self.colleges.append(collegeTextField.text!)
+            self.colleges.append(College(name: collegeTextField.text!))
             self.tableView.reloadData()
         }
         alert.addAction(addAction)
@@ -72,11 +74,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+      colleges.append(College(name: "Harper College", state: "Illinois", population: 6765, image: UIImage(named: "harper")!))
+        
+        
     }
     
-    
-    
-    
+
+
 }
 
