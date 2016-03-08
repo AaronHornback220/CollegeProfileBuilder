@@ -77,6 +77,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       colleges.append(College(name: "Harper College", state: "Illinois", population: 6765, image: UIImage(named: "harper")!))
         
         
+        
     }
     
 

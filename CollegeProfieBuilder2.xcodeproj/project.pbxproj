@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F3E76C81C80D21A0042795E /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3E76C71C80D21A0042795E /* College.swift */; };
+		3F3E76CA1C86155E0042795E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3E76C91C86155E0042795E /* DetailViewController.swift */; };
 		3FA26A851C62AB09002D6BAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA26A841C62AB09002D6BAB /* AppDelegate.swift */; };
 		3FA26A871C62AB09002D6BAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA26A861C62AB09002D6BAB /* ViewController.swift */; };
 		3FA26A8A1C62AB09002D6BAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA26A881C62AB09002D6BAB /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		3F3E76C71C80D21A0042795E /* College.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = College.swift; path = ../College.swift; sourceTree = "<group>"; };
+		3F3E76C91C86155E0042795E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3FA26A811C62AB09002D6BAB /* CollegeProfieBuilder2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeProfieBuilder2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FA26A841C62AB09002D6BAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FA26A861C62AB09002D6BAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				3FA26A841C62AB09002D6BAB /* AppDelegate.swift */,
 				3FA26A861C62AB09002D6BAB /* ViewController.swift */,
+				3F3E76C91C86155E0042795E /* DetailViewController.swift */,
 				3F3E76C71C80D21A0042795E /* College.swift */,
 				3FA26A881C62AB09002D6BAB /* Main.storyboard */,
 				3FA26A8B1C62AB09002D6BAB /* Assets.xcassets */,
@@ -262,6 +265,7 @@
 				3FA26A871C62AB09002D6BAB /* ViewController.swift in Sources */,
 				3FA26A851C62AB09002D6BAB /* AppDelegate.swift in Sources */,
 				3F3E76C81C80D21A0042795E /* College.swift in Sources */,
+				3F3E76CA1C86155E0042795E /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
