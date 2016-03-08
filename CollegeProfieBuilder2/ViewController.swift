@@ -75,6 +75,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
       colleges.append(College(name: "Harper College", state: "Illinois", population: 6765, image: UIImage(named: "harper")!))
+    //colleges.append(College(name: "University of Illiniois", state: "Illinois", population: 44,087, image:
         
         
         
@@ -84,6 +85,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
          let dvc = segue.destinationViewController as! DetailViewController
         let index = tableView.indexPathForSelectedRow?.row
         dvc.college = colleges[index!]
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
 
 }
