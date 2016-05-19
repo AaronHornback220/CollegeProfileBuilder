@@ -11,7 +11,20 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     var colleges : [College] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        colleges.append(College(name: "Harper College", location: "Palatine, Illinois", enrollment: 6765, webpage: "http://goforward.harpercollege.edu", image:UIImage(named: "harper")!))
+        colleges.append(College(name: "University of Illinois", location: "Champaign, Illinois", enrollment: 44087, webpage: "http://illinois.edu", image: UIImage(named:"IllinoisLogo.png")!))
+        colleges.append(College(name: "University of Wisconsin-Madison", location: "Madison, Wisconsin", enrollment: 43193, webpage: "http://www.wisc.edu", image: UIImage(named:"U.png")!))
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return colleges.count
@@ -30,8 +43,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexpath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        let college = colleges[sourceIndexPath.row]
+        colleges.removeAtIndex(sourceIndexPath.row)
+        colleges.insert(college, atIndex: destinationIndexPath.row)
+    }
+    
     @IBAction func onTappedPlusButton(sender: UIBarButtonItem) {
-        
         let alert = UIAlertController(title: "Add Colleges", message: nil, preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
             textField.placeholder = "Add Colleges Here"
@@ -47,24 +69,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexpath: NSIndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        let college = colleges[sourceIndexPath.row]
-            colleges.removeAtIndex(sourceIndexPath.row)
-            colleges.insert(college, atIndex: destinationIndexPath.row)
-    
-        }
-    
-    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBAction func onTappedEditButton(sender: UIBarButtonItem) {
-        editButton.tag = 0
         if sender.tag == 0 {
             tableView.editing = true
             sender.tag = 1
-            
         }
         else{
             tableView.editing = false
@@ -72,24 +80,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      colleges.append(College(name: "Harper College", state: "Illinois", population: 6765, image: UIImage(named: "harper")!))
-    //colleges.append(College(name: "University of Illiniois", state: "Illinois", population: 44,087, image:
-        
-        
-        
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-         let dvc = segue.destinationViewController as! DetailViewController
+        let dvc = segue.destinationViewController as! DetailViewController
         let index = tableView.indexPathForSelectedRow?.row
         dvc.college = colleges[index!]
     }
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
-
 }
 
